@@ -32,5 +32,27 @@ public:
         return result+1;
     }
 };
+/*
+优化版本*/
+/*class Solution {
+    int totalFruit(vector<int>& fruits) {
+        int n = fruits.size();
+        unordered_map<int, int> cnt;//设置一个哈希表，一个代表种类，一个代表数量
+        int left = 0, ans = 0;
+        for(int right = 0; right < n; ++right){
+            ++cnt[fruits[right]];//向哈希表中插入值
+            while (cnt.size()>2){//当哈希表中的种类大于2的时候，维护当前的窗口
+                auto it = cnt.find(fruits[left]);
+                --it->second;
+                if(it->second == 0){//不断查找直到将原本窗口中的一个种类完全删干净
+                    cnt.erase(it);
+                }
+                ++left;
+            }
+            ans = max(ans, right - left + 1);
+        }
+        return ans;
+    }
+}*/
 // @lc code=end
 
