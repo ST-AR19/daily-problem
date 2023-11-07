@@ -18,6 +18,23 @@
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
+        //虚拟头结点方法
+        ListNode* dummyHead = new ListNode(0);
+        dummyHead->next = head;
+        ListNode* cur = dummyHead;
+        while(cur != nullptr && cur->next != nullptr){
+            if(cur->next->val == val){
+                ListNode* temp = cur->next;
+                cur->next = temp->next;
+                delete temp;
+            }else{
+                cur = cur->next;
+            }
+        }
+        head = dummyHead->next;
+        delete dummyHead;
+        return head;
+        /*直接删除
         //删除头节点
         while(head != NULL && head->val == val){
             ListNode* temp = head;
@@ -36,6 +53,7 @@ public:
             }
         }
         return head;
+        */
     }
 };
 // @lc code=end
