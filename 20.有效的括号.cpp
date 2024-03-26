@@ -10,10 +10,10 @@ public:
     bool isValid(string s) {
         if(s.size()%2 != 0) return false;
         stack<char> judge;
-        for(int i=0;i<s.size();i++){
-            if(s[i]=='(') judge.push(')');
-            else if(s[i]=='{') judge.push('}');
-            else if(s[i]=='[') judge.push(']');
+        for(int i=0; i<s.size(); i++){
+            if(s[i] == '(') judge.push(')');
+            else if(s[i] == '[') judge.push(']');
+            else if(s[i] == '{') judge.push('}');
             else if(judge.empty() || judge.top() != s[i]) return false;
             else judge.pop();
         }

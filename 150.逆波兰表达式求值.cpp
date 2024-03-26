@@ -9,19 +9,18 @@ class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
         stack<long long> result;
-        for(int i=0;i<tokens.size();i++){
-            if(tokens[i]=="+" || tokens[i]=="-" || tokens[i]=="*" || tokens[i]=="/"){
-                long long num1=result.top();
+        for(int i=0; i<tokens.size(); i++){
+            if(tokens[i] == "+" || tokens[i] == "-"|| tokens[i] == "*" || tokens[i] == "/"){
+                long long int num1 = result.top();
                 result.pop();
-                long long num2=result.top();
+                long long int num2 = result.top();
                 result.pop();
-                if(tokens[i]=="+") result.push(num2 + num1);
-                if(tokens[i]=="-") result.push(num2 - num1);
-                if(tokens[i]=="*") result.push(num2 * num1);
-                if(tokens[i]=="/") result.push(num2 / num1);
-            }else{
-                result.push(stoll(tokens[i]));
+                if(tokens[i] == "+") result.push(num1+num2);
+                if(tokens[i] == "-") result.push(num1-num2);
+                if(tokens[i] == "*") result.push(num1*num2);
+                if(tokens[i] == "/") result.push(num1/num2);
             }
+            else result.push(stoll(tokens[i]));
         }
         return result.top();
     }
