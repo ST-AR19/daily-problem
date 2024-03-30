@@ -31,6 +31,13 @@ public:
         sum = FoundLeftChildren(root, sum);
         return sum;
     }
+    /*精简版
+    int sumOfLeftLeaves(TreeNode* root) {
+        if(root == NULL) return 0;
+        int sum = 0;
+        if(root->left != NULL && root->left->left == NULL && root->left->right == NULL) sum=node->left->val;
+        return sum + sumOfLeftLeaves(root->left) + sumOfLeftLeaves(root->right);
+    }*/
 };
 // @lc code=end
 
