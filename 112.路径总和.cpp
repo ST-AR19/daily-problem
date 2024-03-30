@@ -32,6 +32,12 @@ public:
         judge(root, sum, targetSum, result);
         return result;
     }
+    /*精简版
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if(!root) return false;
+        if(!root->left && !root->right && sum == root->val) return true;
+        return hasPathSum(root->left, targetSum-root->val) || hasPathSum(root->right, target-root->val);
+    }*/
 };
 // @lc code=end
 
