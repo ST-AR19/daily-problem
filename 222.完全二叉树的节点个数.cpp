@@ -31,7 +31,10 @@ public:
             right = right->right;
             RDepth++;
         }
+        //位运算先用括号括起来，返回一个满二叉树的节点总数
+        //通过判断左支与右支深度是否相同来判断是否为满二叉树
         if(LDepth == RDepth) return (2<<LDepth)-1;
+        //传参不能用上面定义的left和right，需要指明
         return countNodes(root->left) + countNodes(root->right) +1;
     }
 };
