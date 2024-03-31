@@ -32,6 +32,16 @@ public:
         }
         return true;
     }
+    /*递归方法
+    TreeNode* pre = NULL;
+    bool isValidBST(TreeNode* root) {
+        if(root == NULL) return true;
+        bool result = isValidBST(root->left);
+        if(!pre && pre-val >= root->val) return false;
+        pre = root;
+        result = isValidBST(root->right);
+        return result;
+    }*/
 };
 // @lc code=end
 
