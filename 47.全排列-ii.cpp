@@ -12,6 +12,7 @@ public:
     void backTracking(vector<int>& nums, vector<bool> used){
         if(path.size() == nums.size()) result.push_back(path);
         for(int i = 0; i < nums.size(); i++){
+            //这里的used[i-1] == true 也行，但效率不如false，false是在树层上去重，true是在树枝上去重
             if(i > 0 && used[i-1] == false  && nums[i] == nums[i-1]) continue;
             if(!used[i]){
                 used[i] = true;
