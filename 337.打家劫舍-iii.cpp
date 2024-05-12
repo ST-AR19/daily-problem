@@ -17,7 +17,8 @@
  * };
  */
 class Solution {
-public:`
+public:
+/*
     //记录已经计算过的结果，否则会超时
     unordered_map<TreeNode*, int> usedmap;
     int rob(TreeNode* root) {
@@ -35,6 +36,23 @@ public:`
         int result2 = rob(root->left) + rob(root->right);
         usedmap[root] = max(result1, result2);
         return usedmap[root];
+    }
+*/
+    int rob(TreeNode* root){
+        vector<int> result = RT(root);
+        return max(result[0], result[1]);
+    }
+    //0:不偷，1:偷
+    vector<int> RT(TreeNode* cur){
+        if(cur==NULL) return vector<int>{0,0};
+        vector<int> left = RT(cur->left);
+        vector<int> right = RT(cur->right);
+        //偷父当前节点
+        int val1 = cur->val + left[0] + right[0];
+        //不偷当前节点，则可以选择是否偷左右孩子
+        int val2 = max(left[0], left[1]) + max(right[0], right[1]);
+        //注意下标代表的意义
+        return {val2, val1};
     }
 };
 // @lc code=end
