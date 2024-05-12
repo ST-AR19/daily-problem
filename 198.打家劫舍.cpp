@@ -13,7 +13,6 @@ public:
         if(nums.size() == 0) return 0;
 
         vector<int> dp(nums.size(), 0);
-        vector<bool> flag(nums.size(), false);
         //初始化
         dp[0] = nums[0];
         dp[1] = max(nums[0], nums[1]);
