@@ -1,6 +1,7 @@
 class Solution {
 public:
     int countSubstrings(string s) {
+        //dp[i][j]表示i为起点，j为终点的子串是否为回文串
         vector<vector<bool>> dp(s.size(), vector<bool>(s.size(), false));
         int result = 0;
         for(int i = s.size()-1; i >= 0; i--) {
