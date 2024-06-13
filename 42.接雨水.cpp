@@ -27,7 +27,24 @@ public:
             result += min(maxLeft[i], maxRight[i]) - height[i];
         }
         return result;*/
-        //双指针法的优化(行计算)
+        //单调栈(行计算)
+        int result=0;
+        stack<int> st;
+        st.push(0);
+        for(int i = 1; i < height.size(); i++){
+            while(!st.empty() && height[i] > height[st.top()]) {
+                int temp = st.top();
+                st.pop();
+                //关键 由于我们设置的这个单调栈的性质
+                //栈中当前元素的下一个元素是它的左边界，而进了这个while则说明找到了它的右边界
+                //此时便可以计算左右边界之间的面积即是可以接到的雨水多少
+                //这里对于相邻且相同高度的处理逻辑是计算面积为0
+                if (!st.empty()) 
+                result += (min(height[i], height[st.top()])-height[temp]) * (i-st.top()-1);
+            }
+            st.push(i);
+        }
+        return result;
     }
 };
 // @lc code=end
